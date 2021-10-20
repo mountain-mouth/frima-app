@@ -1,7 +1,7 @@
-import 'dart:html';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:furima_app/views/monitor.dart';
 
 //appbar リスト表示
 class Watch extends StatelessWidget {
@@ -9,11 +9,26 @@ class Watch extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: const CupertinoNavigationBar(
+        appBar: CupertinoNavigationBar(
           backgroundColor: CupertinoColors.black,
+          leading:
+              Icon(CupertinoIcons.search, color: CupertinoColors.activeBlue),
           middle: Text(
             'ウォッチ',
             style: TextStyle(color: Colors.blue),
+          ),
+          trailing: CupertinoButton(
+            child: Icon(CupertinoIcons.plus, color: CupertinoColors.activeBlue),
+            onPressed: () {
+              Navigator.push(
+                context,
+                CupertinoPageRoute(
+                  builder: (context) {
+                    return Monitor();
+                  },
+                ),
+              );
+            },
           ),
         ),
         body: Container(
